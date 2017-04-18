@@ -14,7 +14,7 @@
 //通过document.cookie可以读取本地存的cookie
 //location对象，可以获得浏览器的地址信息
 
-define(['jquery','cookie'],function($){
+define(['jquery','template','cookie'],function($,template){
 	//检测用户是否登录
 	if(document.cookie.indexOf('PHPSESSID') == -1 && location.pathname != '/login'){
 		//PHPSESSID不存在，说明未登录过，若不是登录界面，则跳转至登录界面
@@ -26,6 +26,30 @@ define(['jquery','cookie'],function($){
 	//未登录前不存在，为undefined
 	var loginInfo = $.cookie('loginInfo') && JSON.parse($.cookie('loginInfo'));
 	
+	//将存在cookie的用户名和头像显示在页面中
+	/*操作DOM耗费性能，不推荐
+	$('.profile img').attr('src',loginInfo.tc_avatar);
+	$('.profile h4').text(loginInfo.tc_name);*/
+	//模板引擎
+	// 基于模板名渲染模板
+	//template(filename, data);
+	//第一个是模板所在DOM标签的ID，第二个是模板所需要的数据(对象类型)
+	// 将模板源代码编译成函数
+	//template.compile(source, options);
+	//第一个是字符串形式的模板，第二个是配置选项，可省略
+	// 将模板源代码编译成函数并立刻执行
+	//template.render(source, data, options);
+
+	var source = '<div class="avatar img-circle">\
+            		<img src="<%= tc_avatar %>">\
+    			  </div>\
+        		  <h4><%= tc_name %></h4>';
+	/*var render = template.compile(source);
+	var html = render(loginInfo);*/
+	var html = template.render(source,loginInfo);
+	$('.profile').append(html);
+
+
 	//退出登录：点击"退出"按钮，发送ajax请求
 	$('#logout').click(function(){
 		$.ajax({
