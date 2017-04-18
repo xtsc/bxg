@@ -1,12 +1,3 @@
-/*
-	NProgress.start();
-
-	NProgress.done();
-
-	$('.navs ul').prev('a').on('click', function () {
-		$(this).next().slideToggle();
-	});*/
-
 //检测用户是否登录，如果没有登录跳转到登录界面
 //如果用户登录了，会在服务器端存储一个session，浏览器会设置一个名字叫PHPSESSID的cookie
 
@@ -14,7 +5,12 @@
 //通过document.cookie可以读取本地存的cookie
 //location对象，可以获得浏览器的地址信息
 
-define(['jquery','template','cookie'],function($,template){
+define(['jquery','template','nprogress','cookie'],function($,template,nprogress){
+	//进度条
+	nprogress.start();
+	nprogress.done();
+
+
 	//检测用户是否登录
 	if(document.cookie.indexOf('PHPSESSID') == -1 && location.pathname != '/login'){
 		//PHPSESSID不存在，说明未登录过，若不是登录界面，则跳转至登录界面
@@ -47,7 +43,7 @@ define(['jquery','template','cookie'],function($,template){
 	/*var render = template.compile(source);
 	var html = render(loginInfo);*/
 	var html = template.render(source,loginInfo);
-	$('.profile').append(html);
+	$('.aside .profile').append(html);
 
 
 	//退出登录：点击"退出"按钮，发送ajax请求
@@ -66,5 +62,10 @@ define(['jquery','template','cookie'],function($,template){
 				}
 			}
 		});
+	});
+
+	//侧边栏导航切换
+	$('.aside .navs ul').prev('a').on('click',function(){
+		$(this).next().slideToggle();
 	});
 });
