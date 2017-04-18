@@ -1,6 +1,6 @@
 requirejs.config({
 	//直接改变基目录
-	baseUrl:'./public',
+	baseUrl:'/public',
 	//直接指定它的网址或路径
 	paths:{
 		'jquery':'assets/jquery/jquery.min',
