@@ -8,13 +8,22 @@ requirejs.config({
 		'bootstrap':'assets/bootstrap/js/bootstrap.min',
 		'echarts':'assets/echarts/echarts.min',
 		'template':'assets/artTemplate/template-web',
-		'nprogress':'assets/nprogress/nprogress'
+		'nprogress':'assets/nprogress/nprogress',
+		'jqueryForm':'assets/jquery-form/jquery.form',
+		'validate':'assets/jquery-validate/jquery-validate.min',
+		'datepicker':'assets/bootstrap-datepicker/js/bootstrap-datepicker.min',
+		'language':'assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min'
 	},
 	//shim属性，配置不兼容的模块。每个模块要定义（1）exports值（输出的变量名），表明这个模块外部调用时的名称；（2）deps数组，表明该模块的依赖性。
 	shim:{
 		'bootstrap':{
-			exports:'bootstrap',
 			deps:['jquery']
+		},
+		'validate':{
+			deps:['jquery']
+		},
+		'datepicker':{
+			deps:['jquery','datepicker']
 		}
 	}
 });
