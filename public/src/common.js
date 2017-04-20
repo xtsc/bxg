@@ -21,6 +21,7 @@ define(['jquery','template','nprogress','cookie'],function($,template,nprogress)
 	//JSON.parse()解析一个JSON字符串，构造由字符串描述的JavaScript值或对象
 	//未登录前不存在，为undefined
 	var loginInfo = $.cookie('loginInfo') && JSON.parse($.cookie('loginInfo'));
+	loginInfo = loginInfo || {};
 	
 	//将存在cookie的用户名和头像显示在页面中
 	/*操作DOM耗费性能，不推荐

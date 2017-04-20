@@ -19,5 +19,5 @@ requirejs.config({
 	}
 });
 
-//退出登录
+
 require(['src/common']);
