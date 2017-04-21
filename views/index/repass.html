@@ -17,24 +17,30 @@
             <!-- 修改密码 -->
             <div class="body">
                 <div class="repass">
-                    <form action="" class="form-horizontal col-xs-offset-2">
-                        <div class="form-group">
+                    <form action="" class="form-horizontal col-xs-offset-2" id="repassForm">
+                        <div class="form-group has-feedback">
                             <label for="" class="col-xs-3 control-label">原密码</label>
                             <div class="col-xs-4">
-                                <input type="text" class="form-control input-sm">
+                                <input type="text" class="form-control input-sm" name="tc_pass" data-required data-description="pass" data-describedby="passMsg">
+                                <span class="glyphicon form-control-feedback"></span>
                             </div>
+                            <div class="col-xs-5" id="passMsg"></div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group has-feedback">
                             <label for="" class="col-xs-3 control-label">新密码</label>
                             <div class="col-xs-4">
-                                <input type="password" class="form-control input-sm">
+                                <input type="password" class="form-control input-sm newpass" name="tc_new_pass" data-required data-pattern="^[a-zA-Z0-9]{6,12}$" data-description="newpass" data-describedby="newPassMsg">
+                                <span class="glyphicon form-control-feedback"></span>
                             </div>
+                            <div class="col-xs-5" id="newPassMsg"></div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group has-feedback">
                             <label for="" class="col-xs-3 control-label">确认密码</label>
                             <div class="col-xs-4">
-                                <input type="text" class="form-control input-sm">
+                                <input type="password" class="form-control input-sm" name="tc_repass" data-required data-description="repass" data-describedby="repassMsg" data-conditional="confirm">
+                                <span class="glyphicon form-control-feedback"></span>
                             </div>
+                            <div class="col-xs-5" id="repassMsg"></div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-7">
@@ -48,5 +54,9 @@
     </div>
 
     <?php include "./views/layout/scripts.html" ?>
+    <script>
+        require(['src/index/repass']);
+    </script>
+
 </body>
 </html>

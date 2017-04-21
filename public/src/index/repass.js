@@ -1,0 +1,46 @@
+define(['jquery','jqueryForm','validate'],function($){
+	$('#repassForm').validate({
+		sendForm:false,
+		onKeyup:true,
+		eachValidField:function(){
+			//this指合格的表单项
+			$(this).next().addClass('glyphicon-ok').removeClass('glyphicon-remove').parents('.form-group').addClass('has-success').removeClass('has-error');
+		},
+		eachInvalidField:function(){
+			//this指不合格的表单项
+			$(this).next().addClass('glyphicon-remove').removeClass('glyphicon-ok').parents('.form-group').addClass('has-error').removeClass('has-success');
+		},
+		valid:function(){
+			//this指当前表单
+			$(this).ajaxSubmit({
+				url:'/api/teacher/repass',
+				type:'post',
+				success:function(info){
+					if(info.code == 200){
+						console.log(info);
+						location.href = '/login';
+					}
+				}
+			})
+		},
+		conditional:{
+			confirm:function(){
+				//this指当前表单
+				return $(this).val() === $('.newpass').val();
+			}
+		},
+		description:{
+			pass:{
+				required:'原始密码不能为空'
+			},
+			newpass:{
+				required:'新密码不能为空',
+				pattern:'密码为6-12位字母或数字'
+			},
+			repass:{
+				required:'还未确认密码',
+				conditional:'两次输入密码不一致'
+			}
+		}
+	});
+})
