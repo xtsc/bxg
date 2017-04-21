@@ -10,6 +10,12 @@ define(['jquery','template','nprogress','cookie'],function($,template,nprogress)
 	nprogress.start();
 	nprogress.done();
 
+	//loading
+	$(document).ajaxStart(function(){
+		$('.overlay').show();
+	}).ajaxStop(function(){
+		$('.overlay').hide();
+	});
 
 	//检测用户是否登录
 	if(document.cookie.indexOf('PHPSESSID') == -1 && location.pathname != '/login'){

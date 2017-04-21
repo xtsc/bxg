@@ -12,7 +12,10 @@ requirejs.config({
 		'jqueryForm':'assets/jquery-form/jquery.form',
 		'validate':'assets/jquery-validate/jquery-validate.min',
 		'datepicker':'assets/bootstrap-datepicker/js/bootstrap-datepicker.min',
-		'language':'assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min'
+		'language':'assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+		'ckeditor':'assets/ckeditor/ckeditor',
+		'region':'assets/jquery-region/jquery.region',
+		'uploadify':'assets/uploadify/jquery.uploadify.min'
 	},
 	//shim属性，配置不兼容的模块。每个模块要定义（1）exports值（输出的变量名），表明这个模块外部调用时的名称；（2）deps数组，表明该模块的依赖性。
 	shim:{
@@ -22,8 +25,14 @@ requirejs.config({
 		'validate':{
 			deps:['jquery']
 		},
-		'datepicker':{
+		'language':{
 			deps:['jquery','datepicker']
+		},
+		'ckeditor':{
+			exports:'CKEDITOR'
+		},
+		'uploadify':{
+			deps:['jquery']
 		}
 	}
 });
