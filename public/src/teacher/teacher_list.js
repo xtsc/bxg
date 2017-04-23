@@ -1,4 +1,4 @@
-define(['jquery','../utils','template','bootstrap'],function($,utils,template){
+﻿define(['jquery','../utils','template','bootstrap'],function($,utils,template){
 	//设置侧边栏导航高亮显示
 	utils.setMenu('/teacher/teacher_list');
 
@@ -13,6 +13,9 @@ define(['jquery','../utils','template','bootstrap'],function($,utils,template){
 		type:'get',
 		success:function(info){
 			if(info.code == 200){
+				info.result.forEach(function(element, index){
+					element.tc_age = new Date().getFullYear()-element.tc_birthday.slice(0,4);
+				});
 				html = template('listTpl',{teacherData:info.result});
 				teacherList.find('tbody').html(html);
 			}
