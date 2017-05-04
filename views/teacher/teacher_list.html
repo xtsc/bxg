@@ -120,7 +120,7 @@
             <td>{{$value.tc_roster}}</td>
             <td>{{$value.tc_age}}</td>
             <td>{{if $value.tc_gender == 0}}男{{else}}女{{/if}}</td>
-            <td>{{$value.tc_cellphone}}</td>
+            <td>{{if $value.tc_cellphone}}{{$value.tc_cellphone}}{{else}}无{{/if}}</td>
             <td data-id="{{$value.tc_id}}">
                 <a href="javascript:;" class="btn btn-info btn-xs view">查 看</a>
                 <a href="/teacher/teacher_add?tc_id={{$value.tc_id}}" class="btn btn-info btn-xs">编 辑</a>

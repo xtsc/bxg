@@ -15,7 +15,8 @@ requirejs.config({
 		'language':'assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
 		'ckeditor':'assets/ckeditor/ckeditor',
 		'region':'assets/jquery-region/jquery.region',
-		'uploadify':'assets/uploadify/jquery.uploadify.min'
+		'uploadify':'assets/uploadify/jquery.uploadify.min',
+		'Jcrop':'assets/Jcrop/js/Jcrop.min'
 	},
 	//shim属性，配置不兼容的模块。每个模块要定义（1）exports值（输出的变量名），表明这个模块外部调用时的名称；（2）deps数组，表明该模块的依赖性。
 	shim:{
@@ -32,6 +33,9 @@ requirejs.config({
 			exports:'CKEDITOR'
 		},
 		'uploadify':{
+			deps:['jquery']
+		},
+		'Jcrop':{
 			deps:['jquery']
 		}
 	}

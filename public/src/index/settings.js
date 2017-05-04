@@ -68,7 +68,7 @@ define(['jquery','template','ckeditor','jqueryForm','validate','datepicker','lan
 
     			//头像上传
     			$('#upfile').uploadify({
-    				//设置上传图片的尺寸
+    				//设置上传按钮的尺寸
     				width:120,
     				height:120,
     				//设置input[type="file"]上的文字
@@ -81,7 +81,7 @@ define(['jquery','template','ckeditor','jqueryForm','validate','datepicker','lan
     				swf:'/public/assets/uploadify/uploadify.swf',
     				//请求地址
     				uploader:'/api/uploader/avatar',
-    				//请求参数
+    				//input[type="file"]的name值
     				fileObjName:'tc_avatar',
     				onUploadSuccess:function(file,data){
     					//file：上传的文件

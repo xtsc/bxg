@@ -564,6 +564,9 @@ a:focus {
   width: 400px;
   color: #666;
 }
+.main .course-add .picture .up {
+  overflow: hidden;
+}
 .main .course-add .lessons {
   padding: 20px 15px;
 }
